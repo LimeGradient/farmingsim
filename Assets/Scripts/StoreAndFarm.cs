@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class StoreAndFarm : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+   public int inFarm;
+
+    private void Start() {
+        inFarm = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        void OnTriggerEnter(Collider other)
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("Hello");
+        if (inFarm > 0) {
+            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                Debug.Log("break");
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1)) {
+                Debug.Log("Place");
+            }
         }
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.layer == 8) {
+            inFarm++;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.layer == 8) {
+            inFarm--;
+        }
     }
 }
