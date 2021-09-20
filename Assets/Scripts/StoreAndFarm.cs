@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StoreAndFarm : MonoBehaviour
 {
-   public int inFarm;
+    int inFarm;
+    public GameObject plants;
 
     private void Start() {
         inFarm = 0;
@@ -14,11 +15,11 @@ public class StoreAndFarm : MonoBehaviour
     {
         if (inFarm > 0) {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
-                Debug.Log("break");
+                plants.SetActive(false);
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse1)) {
-                Debug.Log("Place");
+                plants.SetActive(true);
             }
         }
     }
