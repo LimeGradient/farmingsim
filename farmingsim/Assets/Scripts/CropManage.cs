@@ -34,8 +34,6 @@ public class CropManage : MonoBehaviour
                 seedCount -= 1;
             }
         }
-
-        shopUpdate();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -72,27 +70,21 @@ public class CropManage : MonoBehaviour
         }
     }
 
-    void shopUpdate()
-    {
         void OnTriggerStay(Collider other) { // checking for shop trigger
             if(other.gameObject.tag == "shop") 
             {
-                while (tomatoCount > 0)
-                {
                 if (Input.GetKeyDown(KeyCode.E)) { // stuff happens here
                     tomatoCount -= 6;
                     money += 5;
                     Debug.Log("Sold!");
                 }
-                }
 
-                if (money < 0)
+                if (money < 0) // idk if this works maybe
                 {
                     if (Input.GetKeyDown(KeyCode.E)) {
                         Debug.Log("Nope");
                     }
                 }
             }
-        }
     }
 }
